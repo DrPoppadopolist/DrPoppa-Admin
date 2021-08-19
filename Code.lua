@@ -41,32 +41,33 @@ local L_26_
 
 local L_27_ = false
 local L_28_ = -3.5
-local L_29_
+local L_29_ = 0
+local L_30_
 
-local L_30_ = false
-local L_31_ = 0.01
+local L_31_ = false
+local L_32_ = 0.01
 
-local L_32_ = false
-local L_33_
+local L_33_ = false
 local L_34_
-
-local L_35_ = false
+local L_35_
 
 local L_36_ = false
-local L_37_
-local L_38_ = "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116"
 
-local L_39_ = false
+local L_37_ = false
+local L_38_
+local L_39_ = "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116"
+
+local L_40_ = false
 _G.BotSpeakers = {
 	"\69\114\114\111\114\83\117\114\103\101"
 }
 
-local L_40_ = {}
 local L_41_ = {}
 local L_42_ = {}
 local L_43_ = {}
+local L_44_ = {}
 
-local L_44_ = {
+local L_45_ = {
 	["\87"] = false,
 	["\65"] = false,
 	["\83"] = false,
@@ -76,13 +77,13 @@ local L_44_ = {
 }
 
 for L_55_forvar1 = 1, 255 do
-	table.insert(L_40_, string.char(L_55_forvar1))
+	table.insert(L_41_, string.char(L_55_forvar1))
 end
 for L_56_forvar1 = 1, 9 do
-	table.insert(L_41_, tostring(L_56_forvar1))
+	table.insert(L_42_, tostring(L_56_forvar1))
 end
 for L_57_forvar1 = 65, 90 do
-	table.insert(L_42_, string.char(L_57_forvar1))
+	table.insert(L_43_, string.char(L_57_forvar1))
 end
 
 -- // FUNCTIONS \\ --
@@ -90,20 +91,20 @@ end
 L_20_ = function(L_58_arg1)
 	local L_59_ = ""
 	for L_60_forvar1 = 1, L_58_arg1 do
-		L_59_ = L_59_ .. L_40_[math["\114\97\110\100\111\109"](1, #L_40_)]
+		L_59_ = L_59_ .. L_41_[math["\114\97\110\100\111\109"](1, #L_41_)]
 	end
 	return L_59_
 end
 
-local function L_45_func(L_61_arg1)
+local function L_46_func(L_61_arg1)
 	if L_61_arg1 ~= nil then
 		local L_62_ = false
 		local L_63_ = false
 		for L_64_forvar1 = 1, string.len(L_61_arg1) do
-			if table.find(L_42_, string.sub(L_61_arg1, L_64_forvar1, L_64_forvar1)) then
+			if table.find(L_43_, string.sub(L_61_arg1, L_64_forvar1, L_64_forvar1)) then
 				L_62_ = true
 			end
-			if table.find(L_41_, string.sub(L_61_arg1, L_64_forvar1, L_64_forvar1)) then
+			if table.find(L_42_, string.sub(L_61_arg1, L_64_forvar1, L_64_forvar1)) then
 				L_63_ = true
 			end
 		end
@@ -118,18 +119,16 @@ end
 
 -- // NOTIFICATION SYSTEM \\ --
 
-local L_46_ = Instance["\110\101\119"]("\83\99\114\101\101\110\71\117\105", L_5_)
-L_46_.Name = L_20_(25)
+local L_47_ = Instance["\110\101\119"]("\83\99\114\101\101\110\71\117\105", L_5_)
+L_47_.Name = L_20_(25)
 
-local L_47_ = Instance["\110\101\119"]("\70\114\97\109\101", L_46_)
-L_47_.Size = UDim2.new(0, 200, 0, 250)
-L_47_.Position = UDim2.new(0, 0, 1, -250)
-L_47_.BorderSizePixel = 0
-L_47_.Transparency = 1
+local L_48_ = Instance["\110\101\119"]("\70\114\97\109\101", L_47_)
+L_48_.Size = UDim2.new(0, 200, 0, 250)
+L_48_.Position = UDim2.new(0, 0, 1, -250)
+L_48_.BorderSizePixel = 0
+L_48_.Transparency = 1
 
-local L_48_ = false
-
-local L_49_ = Instance["\110\101\119"]("\84\101\120\116\66\111\120", L_46_)
+local L_49_ = Instance["\110\101\119"]("\84\101\120\116\66\111\120", L_47_)
 L_49_.Size = UDim2.new(0, 0, 0, 25)
 L_49_.Position = UDim2.new(1, 0, 1, -295)
 L_49_.BackgroundColor = BrickColor.new("\82\101\97\108\108\121\32\98\108\97\99\107")
@@ -156,24 +155,18 @@ L_49_:GetPropertyChangedSignal("\84\101\120\116"):Connect(function()
 end)
 
 L_49_.FocusLost:Connect(function()
-	repeat
-		L_11_:Wait()
-	until not L_48_
 	L_50_:ClearAllChildren()
-	L_48_ = true
 	L_17_(L_49_.Text)
 	L_49_.Text = ""
-	L_49_:TweenSize(UDim2.new(0, 0, 0, 25), "\79\117\116", "\81\117\97\100", 0.2, false)
-	L_49_:TweenPosition(UDim2.new(1, 0, 1, -295), "\79\117\116", "\81\117\97\100", 0.2, false)
-	wait(0.25)
+	L_49_.Size = UDim2.new(0, 0, 0, 25)
+	L_49_.Position = UDim2.new(1, 0, 1, -295)
 	L_49_.Visible = false
-	L_48_ = false
 end)
 
 L_18_ = function()
 	L_50_:ClearAllChildren()
 	local L_65_ = 0
-	for L_66_forvar1, L_67_forvar2 in next, L_43_ do
+	for L_66_forvar1, L_67_forvar2 in next, L_44_ do
 		local L_68_ = string.split(L_67_forvar2.Command, "\47")
 		for L_69_forvar1 = 1, #L_68_ do
 			if string.lower(L_49_.Text) == string.lower(string.sub(L_68_[L_69_forvar1], 1, string.len(L_49_.Text))) and L_21_(L_50_, L_67_forvar2.Command, "\70\105\110\100") == nil then
@@ -252,14 +245,14 @@ L_19_ = function(L_74_arg1, L_75_arg2)
 		if L_22_ and L_23_ then
 			repeat
 				L_11_:Wait()
-			until L_22_ and #L_47_:GetChildren() < 6
+			until L_22_ and #L_48_:GetChildren() < 6
 			L_22_ = false
-			for L_77_forvar1, L_78_forvar2 in next, L_47_:GetChildren() do
+			for L_77_forvar1, L_78_forvar2 in next, L_48_:GetChildren() do
 				L_78_forvar2:TweenPosition(L_78_forvar2.Position + UDim2.new(0, 0, 0, -40), "\79\117\116", "\81\117\97\100", 0.2, false)
 				L_11_:Wait()
 			end
 			wait(0.2)
-			local L_76_ = Instance["\110\101\119"]("\84\101\120\116\76\97\98\101\108", L_47_)
+			local L_76_ = Instance["\110\101\119"]("\84\101\120\116\76\97\98\101\108", L_48_)
 			L_76_.Size = UDim2.new(0, 5 * string.len(L_74_arg1), 0, 35)
 			L_76_.Position = UDim2.new(0.5, -92.5, 1, -40)
 			L_76_.BackgroundColor = BrickColor.new("\82\101\97\108\108\121\32\98\108\97\99\107")
@@ -419,7 +412,7 @@ local function L_54_func(L_103_arg1)
 					L_105_.CFrame = L_105_.CFrame + L_105_.CFrame.lookVector * 0.5
 					L_108_:Destroy()
 					L_11_:Wait()
-				until (L_104_.Position - L_103_arg1[3].Position).magnitude < 3.5 or L_9_.Character == nil or L_104_.Parent == nil
+				until L_105_ == nil or L_108_ == nil or (L_104_.Position - L_103_arg1[3].Position).magnitude < 3.5 or L_9_.Character == nil or L_104_.Parent == nil
 			end
 		elseif L_103_arg1[1] == "\80\111\115\105\116\105\111\110" then
 			if L_103_arg1[2] == "\73\110\115\116\97\110\116" then
@@ -437,7 +430,7 @@ local function L_54_func(L_103_arg1)
 					L_105_.CFrame = L_105_.CFrame + L_105_.CFrame.lookVector * 0.5
 					L_110_:Destroy()
 					L_11_:Wait()
-				until (L_104_.Position - L_103_arg1[3].p).magnitude < 2 or L_9_.Character == nil or L_104_.Parent == nil
+				until L_105_ == nil or L_110_ == nil or (L_104_.Position - L_103_arg1[3].p).magnitude < 2 or L_9_.Character == nil or L_104_.Parent == nil
 			end
 		end
 		L_105_:Destroy()
@@ -454,7 +447,7 @@ L_17_ = function(L_111_arg1)
 				L_112_[L_113_forvar1] = string.lower(L_112_[L_113_forvar1])
 			end
 
-			if L_112_[1] == "\119\97\108\107\115\112\101\101\100" or L_112_[1] == "\119\115" or L_112_[1] == "\115\112\101\101\100" and L_45_func(L_112_[2]) == "\110\117\109\98\101\114" then
+			if L_112_[1] == "\119\97\108\107\115\112\101\101\100" or L_112_[1] == "\119\115" or L_112_[1] == "\115\112\101\101\100" and L_46_func(L_112_[2]) == "\110\117\109\98\101\114" then
 				local L_114_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
 				if L_114_ ~= nil then
 					L_114_.WalkSpeed = L_112_[2]
@@ -462,7 +455,7 @@ L_17_ = function(L_111_arg1)
 				end
 			end
 
-			if L_112_[1] == "\106\117\109\112\112\111\119\101\114" or L_112_[1] == "\106\112" and L_45_func(L_112_[2]) == "\110\117\109\98\101\114" then
+			if L_112_[1] == "\106\117\109\112\112\111\119\101\114" or L_112_[1] == "\106\112" and L_46_func(L_112_[2]) == "\110\117\109\98\101\114" then
 				local L_115_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
 				if L_115_ ~= nil then
 					L_115_.JumpPower = L_112_[2]
@@ -472,23 +465,23 @@ L_17_ = function(L_111_arg1)
 
 			if L_112_[1] == "\118\101\108\111\99\105\116\121\115\112\101\101\100" or L_112_[1] == "\118\115" then
 				if L_112_[2] == nil then
-					L_30_ = not L_30_
-					if L_30_ then
-						L_19_("\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_30_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+					L_31_ = not L_31_
+					if L_31_ then
+						L_19_("\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_31_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 						L_19_("\75\101\101\112\32\105\110\32\109\105\110\100\32\116\104\105\115\32\105\115\32\118\101\114\121\32\115\101\110\115\101\116\105\118\101\44\32\117\115\101\32\108\111\119\32\118\97\108\117\101\115\32\108\105\107\101\32\48\46\49\47\48\46\48\53", "\82\101\97\108\108\121\32\114\101\100")
 					else
-						L_19_("\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_30_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+						L_19_("\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_31_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 					end
-				elseif L_112_[2] ~= nil and L_45_func(L_112_[2]) == "\110\117\109\98\101\114" then
-					L_31_ = L_112_[2]
-					L_19_("\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_31_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				elseif L_112_[2] ~= nil and L_46_func(L_112_[2]) == "\110\117\109\98\101\114" then
+					L_32_ = L_112_[2]
+					L_19_("\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_32_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 				end
 			end
 			if L_112_[1] == "\117\110\118\101\108\111\99\105\116\121\115\112\101\101\100" or L_112_[1] == "\117\110\118\115" then
-				L_30_ = false
+				L_31_ = false
 			end
 
-			if L_112_[1] == "\103\114\97\118\105\116\121" and L_112_[2] ~= nil and L_45_func(L_112_[2]) == "\110\117\109\98\101\114" then
+			if L_112_[1] == "\103\114\97\118\105\116\121" and L_112_[2] ~= nil and L_46_func(L_112_[2]) == "\110\117\109\98\101\114" then
 				workspace.Gravity = L_112_[2]
 				L_19_("\71\114\97\118\105\116\121\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(workspace.Gravity), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 			end
@@ -498,12 +491,12 @@ L_17_ = function(L_111_arg1)
 					L_24_ = not L_24_
 					L_26_ = nil
 					L_19_("\70\108\121\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_24_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
-				elseif L_112_[2] ~= nil and L_45_func(L_112_[2]) == "\110\117\109\98\101\114" then
+				elseif L_112_[2] ~= nil and L_46_func(L_112_[2]) == "\110\117\109\98\101\114" then
 					L_25_ = L_112_[2]
 					L_19_("\70\108\121\83\112\101\101\100\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_112_[2]), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 				end
 			end
-			if L_112_[1] == "\102\108\121\115\112\101\101\100" and L_45_func(L_112_[2]) == "\110\117\109\98\101\114" then
+			if L_112_[1] == "\102\108\121\115\112\101\101\100" and L_46_func(L_112_[2]) == "\110\117\109\98\101\114" then
 				L_25_ = L_112_[2]
 				L_19_("\70\108\121\83\112\101\101\100\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_112_[2]), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 			end
@@ -514,8 +507,8 @@ L_17_ = function(L_111_arg1)
 
 			if L_112_[1] == "\102\108\111\97\116" then
 				L_27_ = not L_27_
-				if not L_27_ and L_29_ ~= nil then
-					L_29_:Destroy()
+				if not L_27_ and L_30_ ~= nil then
+					L_30_:Destroy()
 				end
 				local L_116_ = L_52_func(L_9_)
 				if L_116_ ~= nil and L_116_ == Enum.HumanoidRigType.R15 then
@@ -527,64 +520,71 @@ L_17_ = function(L_111_arg1)
 			end
 			if L_112_[1] == "\117\110\102\108\111\97\116" then
 				L_27_ = false
-				if L_29_ ~= nil then
-					L_29_:Destroy()
+				if L_30_ ~= nil then
+					L_30_:Destroy()
 				end
 				L_19_("\70\108\111\97\116\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_27_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 			end
 
 			if L_112_[1] == "\119\97\108\107\102\108\105\110\103" or L_112_[1] == "\119\102" then
-				L_35_ = not L_35_
-				if L_35_ then
+				L_36_ = not L_36_
+				if L_36_ then
 					local L_117_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
 					if L_117_ ~= nil then
 						L_117_:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
 					end
-					L_19_("\87\97\108\107\70\108\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_35_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
-				elseif not L_35_ then
+					L_19_("\87\97\108\107\70\108\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_36_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				elseif not L_36_ then
 					local L_118_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
 					if L_118_ ~= nil then
 						L_118_:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
 					end
-					L_19_("\87\97\108\107\70\108\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_35_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+					L_19_("\87\97\108\107\70\108\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_36_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 				end
 			end
 			if L_112_[1] == "\117\110\119\97\108\107\102\108\105\110\103" or L_112_[1] == "\117\110\119\102" then
-				L_35_ = false
+				L_36_ = false
 				local L_119_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
 				if L_119_ ~= nil then
 					L_119_:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
 				end
-				L_19_("\87\97\108\107\70\108\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_35_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				L_19_("\87\97\108\107\70\108\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_36_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 			end
 
 
 			if L_112_[1] == "\114\101\106\111\105\110" or L_112_[1] == "\114\106" then
-				L_7_:TeleportToPlaceInstance(game.PlaceId, game.JobId)
-				L_19_("\82\101\106\111\105\110\105\110\103\46\46\46\32", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				if #L_3_:GetPlayers() > 1 then
+					L_7_:TeleportToPlaceInstance(game.PlaceId, game.JobId)
+					L_19_("\82\101\106\111\105\110\105\110\103\46\46\46\32", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				else
+					L_7_:Teleport(game.PlaceId)
+					L_19_("\82\101\106\111\105\110\105\110\103\46\46\46\32", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				end
 			end
 
 			if L_112_[1] == "\99\97\109\108\111\99\107" or L_112_[1] == "\99\108" then
 				if L_112_[2] ~= nil then
 					local L_120_ = L_51_func(L_112_[2])[1]
 					if L_120_ ~= nil then
-						L_36_ = true
-						L_37_ = tostring(L_120_)
-						L_19_("\78\111\119\32\99\97\109\108\111\99\107\105\110\103\32" .. tostring(L_37_) .. "\32\97\116\32\116\104\101\32" .. tostring(L_38_) .. "\32\66\97\115\101\80\97\114\116", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+						L_37_ = true
+						L_38_ = tostring(L_120_)
+						L_19_("\78\111\119\32\99\97\109\108\111\99\107\105\110\103\32" .. tostring(L_38_) .. "\32\97\116\32\116\104\101\32" .. tostring(L_39_) .. "\32\66\97\115\101\80\97\114\116", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+					elseif L_120_ == nil then
+						L_19_("\80\108\97\121\101\114\32\110\111\116\32\102\111\117\110\100\46", "\82\101\97\108\108\121\32\114\101\100")
 					end
 				else
-					L_36_ = not L_36_
-					L_19_("\67\97\109\108\111\99\107\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_36_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+					L_37_ = not L_37_
+					L_19_("\67\97\109\108\111\99\107\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_37_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 				end
 			end
 			if L_112_[1] == "\117\110\99\97\109\108\111\99\107" or L_112_[1] == "\117\110\99\108" then
-				L_36_ = false
-				L_37_ = nil
-				L_19_("\67\97\109\108\111\99\107\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_36_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				L_37_ = false
+				L_38_ = nil
+				L_19_("\67\97\109\108\111\99\107\105\110\103\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_37_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 			end
 			if L_112_[1] == "\99\97\109\108\111\99\107\112\97\114\116" or L_112_[1] == "\99\108\112\97\114\116" and L_112_[2] ~= nil then
-				L_38_ = L_112_[2]
-				L_19_("\67\97\109\108\111\99\107\80\97\114\116\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_38_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+				L_39_ = L_112_[2]
+				L_19_("\67\97\109\108\111\99\107\80\97\114\116\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(L_39_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 			end
 
 			if L_112_[1] == "\100\105\101" then
@@ -617,6 +617,8 @@ L_17_ = function(L_111_arg1)
 							end
 						end)()
 					end
+				elseif L_122_ == nil then
+					L_19_("\80\108\97\121\101\114\32\110\111\116\32\102\111\117\110\100\46", "\82\101\97\108\108\121\32\114\101\100")
 				end
 			end
 
@@ -633,9 +635,9 @@ L_17_ = function(L_111_arg1)
 					end
 					local L_132_ = L_21_(L_9_.Character, "\84\111\111\108", "\70\105\110\100")
 					if L_131_ ~= nil and L_132_ ~= nil and L_130_ ~= nil then
-						L_32_ = true
-						L_33_ = L_132_.Grip
-						L_34_ = L_132_
+						L_33_ = true
+						L_34_ = L_132_.Grip
+						L_35_ = L_132_
 						L_19_("\84\111\111\108\32\110\111\119\32\102\111\108\108\111\119\105\110\103\32" .. tostring(L_129_), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 						coroutine.wrap(function()
 							repeat
@@ -648,23 +650,25 @@ L_17_ = function(L_111_arg1)
 								L_132_.Grip = L_134_:toObjectSpace(L_130_.CFrame):inverse()
 								L_132_.Parent = L_9_.Character
 								L_11_:Wait()
-							until not L_32_ or L_132_ == nil or L_133_ == nil or L_9_.Character == nil or L_130_ == nil
-							L_32_ = false
+							until not L_33_ or L_132_ == nil or L_133_ == nil or L_9_.Character == nil or L_130_ == nil
+							L_33_ = false
 							if L_132_ ~= nil then
 								L_132_.Parent = L_9_.Backpack
-								L_132_.Grip = L_33_
+								L_132_.Grip = L_34_
 								L_132_.Parent = L_9_.Character
 							end
 						end)()
 					end
+				elseif L_129_ == nil then
+					L_19_("\80\108\97\121\101\114\32\110\111\116\32\102\111\117\110\100\46", "\82\101\97\108\108\121\32\114\101\100")
 				end
 			end
 			if L_112_[1] == "\117\110\116\111\111\108\102\111\108\108\111\119" or L_112_[1] == "\117\110\116\102" then
-				L_32_ = false
-				if L_34_ ~= nil and L_33_ ~= nil then
-					L_34_.Parent = L_9_.Backpack
-					L_34_.Grip = L_33_
-					L_34_.Parent = L_9_.Character
+				L_33_ = false
+				if L_35_ ~= nil and L_34_ ~= nil then
+					L_35_.Parent = L_9_.Backpack
+					L_35_.Grip = L_34_
+					L_35_.Parent = L_9_.Character
 					L_19_("\84\111\111\108\32\115\116\111\112\112\101\100\32\102\111\108\108\111\119\105\110\103\32" .. tostring(Player), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 				end
 			end
@@ -689,8 +693,10 @@ L_17_ = function(L_111_arg1)
 				local L_137_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
 				if L_137_ ~= nil then
 					local L_138_ = L_137_.CFrame
+					local L_139_ = L_10_.CoordinateFrame
 					L_17_("\114\101\115\112\97\119\110")
 					L_9_.CharacterAdded:Wait()
+					L_10_.CoordinateFrame = L_139_
 					L_137_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\87\97\105\116")
 					if L_137_ ~= nil then
 						L_137_.CFrame = L_138_
@@ -701,24 +707,25 @@ L_17_ = function(L_111_arg1)
 
 			if L_112_[1] == "\101\115\112" then
 				if L_112_[2] ~= nil then
-					local L_139_ = L_51_func(L_112_[2])[1]
-					if L_139_ ~= nil and L_139_.Character ~= nil then
-						local L_140_ = L_21_(L_139_.Character, "\72\101\97\100", "\70\105\110\100")
-						if L_140_ ~= nil then
-							L_53_func(L_140_, tostring(L_139_))
-							L_19_(tostring(L_139_) .. "\32\104\97\115\32\98\101\101\110\32\69\83\80\39\100", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+					local L_140_ = L_51_func(L_112_[2])[1]
+					if L_140_ ~= nil and L_140_.Character ~= nil then
+						local L_141_ = L_21_(L_140_.Character, "\72\101\97\100", "\70\105\110\100")
+						if L_141_ ~= nil then
+							L_53_func(L_141_, tostring(L_140_))
+							L_19_(tostring(L_140_) .. "\32\104\97\115\32\98\101\101\110\32\69\83\80\39\100", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 						end
-						notify(tostring(L_139_) .. "\39\115\32\99\104\97\114\97\99\116\101\114\32\100\111\101\115\110\39\116\32\101\120\105\115\116", "\82\101\97\108\108\121\32\114\101\100")
+					elseif L_140_ == nil then
+						L_19_("\80\108\97\121\101\114\32\110\111\116\32\102\111\117\110\100\46", "\82\101\97\108\108\121\32\114\101\100")
 					end
 				else
 					EspEnabled = not EspEnabled
 					if EspEnabled then
 						L_19_("\69\115\112\69\110\97\98\108\101\100\32\86\97\108\117\101\32\105\115\32\115\101\116\32\116\111\32" .. tostring(EspEnabled), "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
-						for L_141_forvar1, L_142_forvar2 in next, L_3_:GetPlayers() do
-							if EspEnabled and L_142_forvar2 ~= L_9_ and L_142_forvar2.Character ~= nil then
-								local L_143_ = L_21_(L_142_forvar2.Character, "\72\101\97\100", "\70\105\110\100")
-								if L_143_ ~= nil then
-									L_53_func(L_143_, tostring(L_142_forvar2))
+						for L_142_forvar1, L_143_forvar2 in next, L_3_:GetPlayers() do
+							if EspEnabled and L_143_forvar2 ~= L_9_ and L_143_forvar2.Character ~= nil then
+								local L_144_ = L_21_(L_143_forvar2.Character, "\72\101\97\100", "\70\105\110\100")
+								if L_144_ ~= nil then
+									L_53_func(L_144_, tostring(L_143_forvar2))
 								end
 							end
 						end
@@ -728,13 +735,15 @@ L_17_ = function(L_111_arg1)
 
 			if L_112_[1] == "\117\110\101\115\112" then
 				if L_112_[2] ~= nil then
-					local L_144_ = L_51_func(L_112_[2])[1]
-					if L_144_ ~= nil then
-						local L_145_ = L_21_(L_16_, tostring(L_144_), "\70\105\110\100")
-						if L_145_ ~= nil then
-							L_145_:Destroy()
-							L_19_(tostring(L_144_) .. "\32\104\97\115\32\98\101\101\110\32\85\110\69\83\80\39\100", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+					local L_145_ = L_51_func(L_112_[2])[1]
+					if L_145_ ~= nil then
+						local L_146_ = L_21_(L_16_, tostring(L_145_), "\70\105\110\100")
+						if L_146_ ~= nil then
+							L_146_:Destroy()
+							L_19_(tostring(L_145_) .. "\32\104\97\115\32\98\101\101\110\32\85\110\69\83\80\39\100", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 						end
+					elseif L_145_ == nil then
+						L_19_("\80\108\97\121\101\114\32\110\111\116\32\102\111\117\110\100\46", "\82\101\97\108\108\121\32\114\101\100")
 					end
 				else
 					EspEnabled = false
@@ -745,56 +754,56 @@ L_17_ = function(L_111_arg1)
 
 			if L_112_[1] == "\115\101\114\118\101\114" and L_112_[2] ~= nil then
 				coroutine.wrap(function()
-					local L_146_ = L_8_:JSONDecode(game:HttpGetAsync("\104\116\116\112\115\58\47\47\103\97\109\101\115\46\114\111\98\108\111\120\46\99\111\109\47\118\49\47\103\97\109\101\115\47" .. game.PlaceId .. "\47\115\101\114\118\101\114\115\47\80\117\98\108\105\99\63\115\111\114\116\79\114\100\101\114\61\65\115\99\38\108\105\109\105\116\61\49\48\48")).data
+					local L_147_ = L_8_:JSONDecode(game:HttpGetAsync("\104\116\116\112\115\58\47\47\103\97\109\101\115\46\114\111\98\108\111\120\46\99\111\109\47\118\49\47\103\97\109\101\115\47" .. game.PlaceId .. "\47\115\101\114\118\101\114\115\47\80\117\98\108\105\99\63\115\111\114\116\79\114\100\101\114\61\65\115\99\38\108\105\109\105\116\61\49\48\48")).data
 					if L_112_[2] == "\104\111\112" then
-						local L_147_ = {}
-						for L_148_forvar1, L_149_forvar2 in next, L_146_ do
-							if type(L_149_forvar2) == "\116\97\98\108\101" and L_149_forvar2.maxPlayers > L_149_forvar2.playing and L_149_forvar2.id ~= game.JobId then
-								table.insert(L_147_, L_149_forvar2.id)
+						local L_148_ = {}
+						for L_149_forvar1, L_150_forvar2 in next, L_147_ do
+							if type(L_150_forvar2) == "\116\97\98\108\101" and L_150_forvar2.maxPlayers > L_150_forvar2.playing and L_150_forvar2.id ~= game.JobId then
+								table.insert(L_148_, L_150_forvar2.id)
 							end
 						end
-						if #L_147_ > 0 then
+						if #L_148_ > 0 then
 							L_19_("\84\101\108\101\112\111\114\116\105\110\103\46\46\46")
 							L_7_:TeleportToPlaceInstance(game.PlaceId, val.id)
 						else
 							L_19_("\78\111\32\111\116\104\101\114\32\115\101\114\118\101\114\32\116\111\32\104\111\112\32\116\111\46", "\82\101\97\108\108\121\32\114\101\100")
 						end
 					elseif L_112_[2] == "\98\105\103" then
-						local L_150_ = 0
-						local L_151_
-						for L_152_forvar1, L_153_forvar2 in next, L_146_ do
-							if L_153_forvar2.playing > L_150_ and L_153_forvar2.maxPlayers > L_153_forvar2.playing then
-								L_150_ = L_153_forvar2.playing
-								L_151_ = L_153_forvar2.id
+						local L_151_ = 0
+						local L_152_
+						for L_153_forvar1, L_154_forvar2 in next, L_147_ do
+							if L_154_forvar2.playing > L_151_ and L_154_forvar2.maxPlayers > L_154_forvar2.playing then
+								L_151_ = L_154_forvar2.playing
+								L_152_ = L_154_forvar2.id
 							end
 						end
-						if L_151_ ~= nil then
-							if L_151_ == game.JobId then
+						if L_152_ ~= nil then
+							if L_152_ == game.JobId then
 								L_19_("\89\111\117\39\114\101\32\99\117\114\114\101\110\116\108\121\32\105\110\32\116\104\101\32\98\105\103\103\101\115\116\32\115\101\114\118\101\114", "\82\101\97\108\108\121\32\114\101\100")
 							else
 								L_19_("\84\101\108\101\112\111\114\116\105\110\103\46\46\46")
-								L_7_:TeleportToPlaceInstance(game.PlaceId, L_151_)
+								L_7_:TeleportToPlaceInstance(game.PlaceId, L_152_)
 							end
-						elseif L_151_ == nil then
+						elseif L_152_ == nil then
 							L_19_("\85\109\109\109", "\82\101\97\108\108\121\32\114\101\100")
 						end
 					elseif L_112_[2] == "\112\105\110\103" then
-						local L_154_ = 9e9
-						local L_155_
-						for L_156_forvar1, L_157_forvar2 in next, L_146_ do
-							if L_157_forvar2.ping < L_154_ and L_157_forvar2.maxPlayers > L_157_forvar2.playing then
-								L_154_ = L_157_forvar2.ping
-								L_155_ = L_157_forvar2.id
+						local L_155_ = 9e9
+						local L_156_
+						for L_157_forvar1, L_158_forvar2 in next, L_147_ do
+							if L_158_forvar2.ping < L_155_ and L_158_forvar2.maxPlayers > L_158_forvar2.playing then
+								L_155_ = L_158_forvar2.ping
+								L_156_ = L_158_forvar2.id
 							end
 						end
-						if L_155_ ~= nil then
-							if L_155_ == game.JobId then
+						if L_156_ ~= nil then
+							if L_156_ == game.JobId then
 								L_19_("\89\111\117\39\114\101\32\99\117\114\114\101\110\116\108\121\32\105\110\32\116\104\101\32\98\101\115\116\32\112\105\110\103\32\115\101\114\118\101\114", "\82\101\97\108\108\121\32\114\101\100")
 							else
 								L_19_("\84\101\108\101\112\111\114\116\105\110\103\46\46\46")
-								L_7_:TeleportToPlaceInstance(game.PlaceId, L_155_)
+								L_7_:TeleportToPlaceInstance(game.PlaceId, L_156_)
 							end
-						elseif L_155_ == nil then
+						elseif L_156_ == nil then
 							L_19_("\85\109\109\109", "\82\101\97\108\108\121\32\114\101\100")
 						end
 					end
@@ -802,28 +811,32 @@ L_17_ = function(L_111_arg1)
 			end
 
 			if L_112_[1] == "\116\112" or L_112_[1] == "\116\101\108\101\112\111\114\116" or L_112_[1] == "\116\111" and L_112_[2] ~= nil then
-				local L_158_ = L_51_func(L_112_[2])[1]
-				if L_158_ ~= nil and L_158_.Character ~= nil then
-					local L_159_ = L_21_(L_158_.Character, "\84\111\114\115\111", "\70\105\110\100")
-					if L_159_ == nil then
-						L_159_ = L_21_(L_158_.Character, "\85\112\112\101\114\84\111\114\115\111", "\70\105\110\100")
+				local L_159_ = L_51_func(L_112_[2])[1]
+				if L_159_ ~= nil and L_159_.Character ~= nil then
+					local L_160_ = L_21_(L_159_.Character, "\84\111\114\115\111", "\70\105\110\100")
+					if L_160_ == nil then
+						L_160_ = L_21_(L_159_.Character, "\85\112\112\101\114\84\111\114\115\111", "\70\105\110\100")
 					end
-					if L_159_ ~= nil then
-						L_54_func("\80\97\114\116", "\73\110\115\116\97\110\116", L_159_)
+					if L_160_ ~= nil then
+						L_54_func("\80\97\114\116", "\73\110\115\116\97\110\116", L_160_)
 					end
+				elseif L_159_ == nil then
+					L_19_("\80\108\97\121\101\114\32\110\111\116\32\102\111\117\110\100\46", "\82\101\97\108\108\121\32\114\101\100")
 				end
 			end
 
 			if L_112_[1] == "\98\116\112" or L_112_[1] == "\98\116\101\108\101\112\111\114\116" or L_112_[1] == "\98\116\111" and L_112_[2] ~= nil then
-				local L_160_ = L_51_func(L_112_[2])[1]
-				if L_160_ ~= nil and L_160_.Character ~= nil then
-					local L_161_ = L_21_(L_160_.Character, "\84\111\114\115\111", "\70\105\110\100")
-					if L_161_ == nil then
-						L_161_ = L_21_(L_160_.Character, "\85\112\112\101\114\84\111\114\115\111", "\70\105\110\100")
+				local L_161_ = L_51_func(L_112_[2])[1]
+				if L_161_ ~= nil and L_161_.Character ~= nil then
+					local L_162_ = L_21_(L_161_.Character, "\84\111\114\115\111", "\70\105\110\100")
+					if L_162_ == nil then
+						L_162_ = L_21_(L_161_.Character, "\85\112\112\101\114\84\111\114\115\111", "\70\105\110\100")
 					end
-					if L_161_ ~= nil then
-						L_54_func("\80\97\114\116", "\80\114\111\103\114\101\115\115", L_161_)
+					if L_162_ ~= nil then
+						L_54_func("\80\97\114\116", "\80\114\111\103\114\101\115\115", L_162_)
 					end
+				elseif L_161_ == nil then
+					L_19_("\80\108\97\121\101\114\32\110\111\116\32\102\111\117\110\100\46", "\82\101\97\108\108\121\32\114\101\100")
 				end
 			end
 
@@ -841,70 +854,70 @@ if not game:IsLoaded() then
 	L_19_("\71\97\109\101\32\108\111\97\100\101\100\33", "\76\105\109\101\32\103\114\101\101\110")
 end
 
-for L_162_forvar1, L_163_forvar2 in next, L_3_:GetPlayers() do
-	if EspEnabled and L_163_forvar2 ~= L_9_ and L_163_forvar2.Character ~= nil then
-		local L_164_ = L_21_(L_163_forvar2.Character, "\72\101\97\100", "\70\105\110\100")
-		if L_164_ ~= nil then
-			L_53_func(L_164_, tostring(L_163_forvar2))
+for L_163_forvar1, L_164_forvar2 in next, L_3_:GetPlayers() do
+	if EspEnabled and L_164_forvar2 ~= L_9_ and L_164_forvar2.Character ~= nil then
+		local L_165_ = L_21_(L_164_forvar2.Character, "\72\101\97\100", "\70\105\110\100")
+		if L_165_ ~= nil then
+			L_53_func(L_165_, tostring(L_164_forvar2))
 		end
 	end
-	L_163_forvar2.CharacterAdded:Connect(function(L_165_arg1)
-		local L_166_ = L_21_(L_165_arg1, "\72\101\97\100", "\87\97\105\116")
-		if EspEnabled and L_166_ ~= nil then
-			L_53_func(L_166_, tostring(L_163_forvar2))
+	L_164_forvar2.CharacterAdded:Connect(function(L_166_arg1)
+		local L_167_ = L_21_(L_166_arg1, "\72\101\97\100", "\87\97\105\116")
+		if EspEnabled and L_167_ ~= nil then
+			L_53_func(L_167_, tostring(L_164_forvar2))
 		end
 	end)
 end
 
-L_3_.PlayerAdded:Connect(function(L_167_arg1)
-	if L_167_arg1.Character ~= nil then
-		local L_168_ = L_21_(L_167_arg1.Character, "\72\101\97\100", "\70\105\110\100")
-		if EspEnabled and L_168_ ~= nil then
-			L_53_func(L_168_, tostring(L_167_arg1))
+L_3_.PlayerAdded:Connect(function(L_168_arg1)
+	if L_168_arg1.Character ~= nil then
+		local L_169_ = L_21_(L_168_arg1.Character, "\72\101\97\100", "\70\105\110\100")
+		if EspEnabled and L_169_ ~= nil then
+			L_53_func(L_169_, tostring(L_168_arg1))
 		end
 	end
-	L_167_arg1.CharacterAdded:Connect(function(L_169_arg1)
-		local L_170_ = L_21_(L_169_arg1, "\72\101\97\100", "\87\97\105\116")
-		if EspEnabled and L_170_ ~= nil then
-			L_53_func(L_170_, tostring(L_167_arg1))
+	L_168_arg1.CharacterAdded:Connect(function(L_170_arg1)
+		local L_171_ = L_21_(L_170_arg1, "\72\101\97\100", "\87\97\105\116")
+		if EspEnabled and L_171_ ~= nil then
+			L_53_func(L_171_, tostring(L_168_arg1))
 		end
 	end)
 end)
 
 -- // USER INPUTS \\ --
 
-L_6_.InputBegan:Connect(function(L_171_arg1, L_172_arg2)
-	if L_172_arg2 then
+L_6_.InputBegan:Connect(function(L_172_arg1, L_173_arg2)
+	if L_173_arg2 then
 		Typing = true
-	elseif not L_172_arg2 then
+	elseif not L_173_arg2 then
 		Typing = false
-		if L_171_arg1.KeyCode == Enum.KeyCode.W then
-			L_44_["\87"] = true
+		if L_172_arg1.KeyCode == Enum.KeyCode.W then
+			L_45_["\87"] = true
 		end
-		if L_171_arg1.KeyCode == Enum.KeyCode.A then
-			L_44_["\65"] = true
+		if L_172_arg1.KeyCode == Enum.KeyCode.A then
+			L_45_["\65"] = true
 		end
-		if L_171_arg1.KeyCode == Enum.KeyCode.S then
-			L_44_["\83"] = true
+		if L_172_arg1.KeyCode == Enum.KeyCode.S then
+			L_45_["\83"] = true
 		end
-		if L_171_arg1.KeyCode == Enum.KeyCode.D then
-			L_44_["\68"] = true
+		if L_172_arg1.KeyCode == Enum.KeyCode.D then
+			L_45_["\68"] = true
 		end
-		if L_171_arg1.KeyCode == Enum.KeyCode.Q then
-			L_44_["\81"] = true
-			if L_27_ and not L_44_["\69"] then
-				L_28_ = L_28_ + 0.5
+		if L_172_arg1.KeyCode == Enum.KeyCode.Q then
+			L_45_["\81"] = true
+			if L_27_ then
+				L_29_ = 0.5
 			end
 		end
-		if L_171_arg1.KeyCode == Enum.KeyCode.E then
-			L_44_["\69"] = true
-			if L_27_ and not L_44_["\81"] then
-				L_28_ = L_28_ - 0.5
+		if L_172_arg1.KeyCode == Enum.KeyCode.E then
+			L_45_["\69"] = true
+			if L_27_ then
+				L_29_ = -0.5
 			end
 		end
-		if L_171_arg1.KeyCode == L_15_ and not L_48_ then
+		if L_172_arg1.KeyCode == L_15_ and not CmdBarTweening then
 			L_18_()
-			L_48_ = true
+			CmdBarTweening = true
 			L_49_.Size = UDim2.new(0, 0, 0, 25)
 			L_49_.Position = UDim2.new(1, 0, 1, -295)
 			L_49_.Visible = true
@@ -913,39 +926,39 @@ L_6_.InputBegan:Connect(function(L_171_arg1, L_172_arg2)
 			L_11_:Wait()
 			L_49_:CaptureFocus()
 			wait(0.25)
-			L_48_ = false
+			CmdBarTweening = false
 		end
 	end
 end)
 
-L_6_.InputEnded:Connect(function(L_173_arg1, L_174_arg2)
-	if L_173_arg1.KeyCode == Enum.KeyCode.W then
-		L_44_["\87"] = false
+L_6_.InputEnded:Connect(function(L_174_arg1, L_175_arg2)
+	if L_174_arg1.KeyCode == Enum.KeyCode.W then
+		L_45_["\87"] = false
 	end
-	if L_173_arg1.KeyCode == Enum.KeyCode.A then
-		L_44_["\65"] = false
+	if L_174_arg1.KeyCode == Enum.KeyCode.A then
+		L_45_["\65"] = false
 	end
-	if L_173_arg1.KeyCode == Enum.KeyCode.S then
-		L_44_["\83"] = false
+	if L_174_arg1.KeyCode == Enum.KeyCode.S then
+		L_45_["\83"] = false
 	end
-	if L_173_arg1.KeyCode == Enum.KeyCode.D then
-		L_44_["\68"] = false
+	if L_174_arg1.KeyCode == Enum.KeyCode.D then
+		L_45_["\68"] = false
 	end
-	if L_173_arg1.KeyCode == Enum.KeyCode.Q then
-		L_44_["\81"] = false
-		if L_27_ and not L_44_["\69"] then
-			L_28_ = L_28_ - 0.5
+	if L_174_arg1.KeyCode == Enum.KeyCode.Q then
+		L_45_["\81"] = false
+		if L_27_ then
+			L_29_ = 0
 		end
 	end
-	if L_173_arg1.KeyCode == Enum.KeyCode.E then
-		L_44_["\69"] = false
-		if L_27_ and not L_44_["\81"] then
-			L_28_ = L_28_ + 0.5
+	if L_174_arg1.KeyCode == Enum.KeyCode.E then
+		L_45_["\69"] = false
+		if L_27_ then
+			L_29_ = 0
 		end
 	end
-	if L_174_arg2 then
+	if L_175_arg2 then
 		Typing = true
-	elseif not L_174_arg2 then
+	elseif not L_175_arg2 then
 		Typing = false
 	end
 end)
@@ -954,19 +967,19 @@ end)
 
 coroutine.wrap(function()
 	while true do
-		if L_36_ and L_37_ ~= nil then
-			local L_175_ = {}
-			local L_176_ = L_21_(L_3_, L_37_, "\70\105\110\100")
-			local L_177_
-			if L_176_ ~= nil and L_176_.Character ~= nil then
-				for L_178_forvar1, L_179_forvar2 in next, L_176_.Character:GetChildren() do
-					if L_179_forvar2:IsA("\66\97\115\101\80\97\114\116") and string.lower(tostring(L_179_forvar2)) == string.lower(L_38_) then
-						L_177_ = L_179_forvar2
+		if L_37_ and L_38_ ~= nil then
+			local L_176_ = {}
+			local L_177_ = L_21_(L_3_, L_38_, "\70\105\110\100")
+			local L_178_
+			if L_177_ ~= nil and L_177_.Character ~= nil then
+				for L_179_forvar1, L_180_forvar2 in next, L_177_.Character:GetChildren() do
+					if L_180_forvar2:IsA("\66\97\115\101\80\97\114\116") and string.lower(tostring(L_180_forvar2)) == string.lower(L_39_) then
+						L_178_ = L_180_forvar2
 						break
 					end
 				end
-				if L_177_ ~= nil then
-					L_10_.CoordinateFrame = CFrame["\110\101\119"](L_10_.CoordinateFrame.p, L_177_.Position)
+				if L_178_ ~= nil then
+					L_10_.CoordinateFrame = CFrame["\110\101\119"](L_10_.CoordinateFrame.p, L_178_.Position)
 				end
 			end
 		end
@@ -976,34 +989,34 @@ end)()
 
 coroutine.wrap(function()
 	while true do
-		if L_30_ then
-			local L_180_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			local L_181_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_180_ ~= nil and L_181_ ~= nil then
-				local L_182_ = Vector3["\110\101\119"](L_181_.MoveDirection.X, 0, L_181_.MoveDirection.Z) * L_31_
-				L_180_.CFrame = L_180_.CFrame + L_182_
+		if L_31_ then
+			local L_181_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_182_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_181_ ~= nil and L_182_ ~= nil then
+				local L_183_ = Vector3["\110\101\119"](L_182_.MoveDirection.X, 0, L_182_.MoveDirection.Z) * L_32_
+				L_181_.CFrame = L_181_.CFrame + L_183_
 			end
 		end
 		if L_27_ then
-			local L_183_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			if L_29_ == nil then
-				L_29_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
-				L_29_.Transparency = 1
-				L_29_.Size = Vector3["\110\101\119"](6, 1, 6)
-				L_29_.Anchored = true
-				L_29_.Name = L_20_(25)
+			local L_184_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			if L_30_ == nil then
+				L_30_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
+				L_30_.Transparency = 1
+				L_30_.Size = Vector3["\110\101\119"](6, 1, 6)
+				L_30_.Anchored = true
+				L_30_.Name = L_20_(25)
 			end
-			if L_183_ ~= nil then
-				L_29_.CFrame = L_183_.CFrame * CFrame["\110\101\119"](0, L_28_, 0)
+			if L_184_ ~= nil then
+				L_30_.CFrame = L_184_.CFrame * CFrame["\110\101\119"](0, L_28_ + L_29_, 0)
 			end
 		end
-		if L_35_ then
-			local L_184_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			local L_185_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_184_ ~= nil and L_185_ ~= nil then
-				L_185_:ChangeState(11)
-				L_184_.Velocity = Vector3["\110\101\119"](0, 900000, 0)
-				L_185_:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+		if L_36_ then
+			local L_185_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_186_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_185_ ~= nil and L_186_ ~= nil then
+				L_186_:ChangeState(11)
+				L_185_.Velocity = Vector3["\110\101\119"](0, 900000, 0)
+				L_186_:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
 			end
 		end
 		L_12_:Wait()
@@ -1013,51 +1026,51 @@ end)()
 coroutine.wrap(function()
 	while true do
 		if L_24_ then
-			local L_186_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			local L_187_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_186_ ~= nil and L_187_ ~= nil then
+			local L_187_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_188_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_187_ ~= nil and L_188_ ~= nil then
 				if L_26_ ~= nil then
-					L_186_.CFrame = L_26_
+					L_187_.CFrame = L_26_
 				end
-				L_187_.PlatformStand = true
-				local L_188_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
-				L_188_.Name = L_20_(25)
-				L_188_.Size = Vector3["\110\101\119"](1, 1, 1)
-				L_188_.Anchored = true
-				L_188_.CFrame = L_186_.CFrame
-				L_188_.CanCollide = false
-				L_188_.Transparency = 1
-				local L_189_ = Instance["\110\101\119"]("\87\101\108\100", L_188_)
-				L_189_.Part0 = L_186_
-				L_189_.Part1 = L_188_
+				L_188_.PlatformStand = true
+				local L_189_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
+				L_189_.Name = L_20_(25)
+				L_189_.Size = Vector3["\110\101\119"](1, 1, 1)
+				L_189_.Anchored = true
+				L_189_.CFrame = L_187_.CFrame
+				L_189_.CanCollide = false
+				L_189_.Transparency = 1
+				local L_190_ = Instance["\110\101\119"]("\87\101\108\100", L_189_)
+				L_190_.Part0 = L_187_
+				L_190_.Part1 = L_189_
 				if not Typing then
-					if L_44_["\87"] then
-						L_188_.CFrame = L_188_.CFrame + L_188_.CFrame.lookVector * L_25_
+					if L_45_["\87"] then
+						L_189_.CFrame = L_189_.CFrame + L_189_.CFrame.lookVector * L_25_
 					end
-					if L_44_["\83"] then
-						L_188_.CFrame = L_188_.CFrame + L_188_.CFrame.lookVector * -L_25_
+					if L_45_["\83"] then
+						L_189_.CFrame = L_189_.CFrame + L_189_.CFrame.lookVector * -L_25_
 					end
-					if L_44_["\65"] then
-						L_188_.CFrame = L_188_.CFrame + L_188_.CFrame.rightVector * -L_25_
+					if L_45_["\65"] then
+						L_189_.CFrame = L_189_.CFrame + L_189_.CFrame.rightVector * -L_25_
 					end
-					if L_44_["\68"] then
-						L_188_.CFrame = L_188_.CFrame + L_188_.CFrame.rightVector * L_25_
+					if L_45_["\68"] then
+						L_189_.CFrame = L_189_.CFrame + L_189_.CFrame.rightVector * L_25_
 					end
 				end
-				L_188_.CFrame = CFrame["\110\101\119"](L_186_.Position, L_10_.CoordinateFrame.lookVector * 9e9)
-				L_26_ = L_186_.CFrame
+				L_189_.CFrame = CFrame["\110\101\119"](L_187_.Position, L_10_.CoordinateFrame.lookVector * 9e9)
+				L_26_ = L_187_.CFrame
 				L_13_:Wait()
-				if L_186_ ~= nil and L_26_ ~= nil then
-					L_186_.CFrame = L_26_
+				if L_187_ ~= nil and L_26_ ~= nil then
+					L_187_.CFrame = L_26_
+				end
+				if L_190_ ~= nil then
+					L_190_:Destroy()
 				end
 				if L_189_ ~= nil then
 					L_189_:Destroy()
 				end
 				if L_188_ ~= nil then
-					L_188_:Destroy()
-				end
-				if L_187_ ~= nil then
-					L_187_.PlatformStand = false
+					L_188_.PlatformStand = false
 				end
 			end
 		end
@@ -1065,86 +1078,90 @@ coroutine.wrap(function()
 	end
 end)()
 
-table.insert(L_43_, {
-	Command = "\70\108\121",
-	Description = "\70\108\121\44\32\121\111\117\32\99\97\110\32\99\104\97\110\103\101\32\116\104\101\32\115\112\101\101\100\32\98\121\32\n\116\121\112\105\110\103\32\70\108\121\115\112\101\101\100\32\78\117\109\98\101\114\n\n\69\120\97\109\112\108\101\58\32\102\108\121\115\112\101\101\100\32\50"
-})
-table.insert(L_43_, {
-	Command = "\70\108\111\97\116",
-	Description = "\70\108\111\97\116\44\32\80\114\101\115\115\32\81\47\69\32\116\111\32\103\111\32\117\112\32\97\110\100\32\100\111\119\110\46"
-})
-table.insert(L_43_, {
-	Command = "\70\108\105\110\103",
-	Description = "\70\108\105\110\103\32\115\111\109\101\111\110\101\44\32\119\105\108\108\32\110\111\116\32\97\108\119\97\121\115\32\119\111\114\107\46"
-})
-table.insert(L_43_, {
-	Command = "\82\101\106\111\105\110",
-	Description = "\82\101\106\111\105\110\32\100\97\32\103\97\109\101"
-})
-table.insert(L_43_, {
-	Command = "\86\101\108\111\99\105\116\121\115\112\101\101\100\47\86\115",
-	Description = "\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\98\121\112\97\115\115\101\115\32\115\111\109\101\32\97\110\116\105\n\99\104\101\97\116\115\32\116\104\97\116\32\104\97\118\101\32\87\97\108\107\83\112\101\101\100\32\99\104\101\99\107\115\46"
-})
-table.insert(L_43_, {
-	Command = "\87\97\108\107\83\112\101\101\100\47\119\115\47\115\112\101\101\100",
-	Description = "\87\97\108\107\83\112\101\101\100\44\32\99\104\97\110\103\101\115\32\87\97\108\107\83\112\101\101\100\46\n\n\69\120\97\109\112\108\101\58\32\119\115\32\49\48\48"
-})
-table.insert(L_43_, {
-	Command = "\74\117\109\112\80\111\119\101\114\47\106\112",
-	Description = "\74\117\109\112\80\111\119\101\114\44\32\99\104\97\110\103\101\115\32\74\117\109\112\80\111\119\101\114\46\n\n\32\69\120\97\109\112\108\101\58\32\106\112\32\49\48\48"
-})
-table.insert(L_43_, {
-	Command = "\87\97\108\107\70\108\105\110\103\47\119\102",
-	Description = "\87\97\108\107\70\108\105\110\103\44\32\119\97\108\107\32\105\110\116\111\32\112\101\111\112\108\101\32\97\110\100\32\105\116\n\119\105\108\108\32\102\108\105\110\103\32\116\104\101\109"
-})
-table.insert(L_43_, {
-	Command = "\84\111\111\108\102\111\108\108\111\119\47\116\102",
-	Description = "\77\97\107\101\115\32\121\111\117\114\32\116\111\111\108\32\102\111\108\108\111\119\32\115\111\109\101\111\110\101\n\97\114\111\117\110\100\46\n\n\85\110\116\111\111\108\102\111\108\108\111\119\47\117\110\116\102\32\116\111\32\115\116\111\112\32\105\116\46"
-})
-table.insert(L_43_, {
-	Command = "\82\101\102\114\101\115\104",
-	Description = "\82\101\115\112\97\119\110\115\32\121\111\117\32\116\104\101\110\32\114\101\116\117\114\110\115\32\121\111\117\32\116\111\n\112\114\101\118\105\111\117\115\32\112\111\115\105\116\105\111\110\46"
-})
-table.insert(L_43_, {
-	Command = "\82\101\115\112\97\119\110",
-	Description = "\82\101\115\112\97\119\110\115\32\121\111\117"
-})
-table.insert(L_43_, {
-	Command = "\83\101\114\118\101\114",
-	Description = "\83\101\114\118\101\114\32\99\104\111\111\115\105\110\103\32\99\111\109\109\109\97\110\100\n\n\69\120\97\109\112\108\101\58\n\115\101\114\118\101\114\32\104\111\112\47\115\101\114\118\101\114\32\98\105\103\47\115\101\114\118\101\114\32\112\105\110\103"
-})
-table.insert(L_43_, {
+table.insert(L_44_, {
 	Command = "\69\115\112",
 	Description = "\69\83\80\n\n\69\120\97\109\112\108\101\58\69\115\112\47\69\115\112\32\112\108\97\121\101\114"
 })
-table.insert(L_43_, {
-	Command = "\67\97\109\108\111\99\107\47\85\110\67\97\109\108\111\99\107",
+table.insert(L_44_, {
+	Command = "\70\108\121",
+	Description = "\70\108\121\44\32\121\111\117\32\99\97\110\32\99\104\97\110\103\101\32\116\104\101\32\115\112\101\101\100\32\98\121\32\n\116\121\112\105\110\103\32\70\108\121\115\112\101\101\100\32\78\117\109\98\101\114\n\n\69\120\97\109\112\108\101\58\32\102\108\121\115\112\101\101\100\32\50"
+})
+table.insert(L_44_, {
+	Command = "\70\108\111\97\116",
+	Description = "\70\108\111\97\116\44\32\80\114\101\115\115\32\81\47\69\32\116\111\32\103\111\32\117\112\32\97\110\100\32\100\111\119\110\46"
+})
+table.insert(L_44_, {
+	Command = "\70\108\105\110\103",
+	Description = "\70\108\105\110\103\32\115\111\109\101\111\110\101\44\32\119\105\108\108\32\110\111\116\32\97\108\119\97\121\115\32\119\111\114\107\46"
+})
+table.insert(L_44_, {
+	Command = "\82\101\106\111\105\110",
+	Description = "\82\101\106\111\105\110\32\100\97\32\103\97\109\101"
+})
+table.insert(L_44_, {
+	Command = "\86\101\108\111\99\105\116\121\115\112\101\101\100\47\86\115",
+	Description = "\86\101\108\111\99\105\116\121\32\83\112\101\101\100\32\98\121\112\97\115\115\101\115\32\115\111\109\101\32\97\110\116\105\n\99\104\101\97\116\115\32\116\104\97\116\32\104\97\118\101\32\87\97\108\107\83\112\101\101\100\32\99\104\101\99\107\115\46"
+})
+table.insert(L_44_, {
+	Command = "\87\97\108\107\83\112\101\101\100\47\119\115\47\115\112\101\101\100",
+	Description = "\87\97\108\107\83\112\101\101\100\44\32\99\104\97\110\103\101\115\32\87\97\108\107\83\112\101\101\100\46\n\n\69\120\97\109\112\108\101\58\32\119\115\32\49\48\48"
+})
+table.insert(L_44_, {
+	Command = "\74\117\109\112\80\111\119\101\114\47\106\112",
+	Description = "\74\117\109\112\80\111\119\101\114\44\32\99\104\97\110\103\101\115\32\74\117\109\112\80\111\119\101\114\46\n\n\32\69\120\97\109\112\108\101\58\32\106\112\32\49\48\48"
+})
+table.insert(L_44_, {
+	Command = "\87\97\108\107\70\108\105\110\103\47\119\102",
+	Description = "\87\97\108\107\70\108\105\110\103\44\32\119\97\108\107\32\105\110\116\111\32\112\101\111\112\108\101\32\97\110\100\32\105\116\n\119\105\108\108\32\102\108\105\110\103\32\116\104\101\109"
+})
+table.insert(L_44_, {
+	Command = "\84\111\111\108\102\111\108\108\111\119\47\116\102",
+	Description = "\77\97\107\101\115\32\121\111\117\114\32\116\111\111\108\32\102\111\108\108\111\119\32\115\111\109\101\111\110\101\n\97\114\111\117\110\100\46\n\n\85\110\116\111\111\108\102\111\108\108\111\119\47\117\110\116\102\32\116\111\32\115\116\111\112\32\105\116\46"
+})
+table.insert(L_44_, {
+	Command = "\82\101\102\114\101\115\104",
+	Description = "\82\101\115\112\97\119\110\115\32\121\111\117\32\116\104\101\110\32\114\101\116\117\114\110\115\32\121\111\117\32\116\111\n\112\114\101\118\105\111\117\115\32\112\111\115\105\116\105\111\110\46"
+})
+table.insert(L_44_, {
+	Command = "\82\101\115\112\97\119\110",
+	Description = "\82\101\115\112\97\119\110\115\32\121\111\117"
+})
+table.insert(L_44_, {
+	Command = "\83\101\114\118\101\114",
+	Description = "\83\101\114\118\101\114\32\99\104\111\111\115\105\110\103\32\99\111\109\109\109\97\110\100\n\n\69\120\97\109\112\108\101\58\n\115\101\114\118\101\114\32\104\111\112\47\115\101\114\118\101\114\32\98\105\103\47\115\101\114\118\101\114\32\112\105\110\103"
+})
+table.insert(L_44_, {
+	Command = "\67\97\109\108\111\99\107",
 	Description = "\76\111\99\107\115\32\121\111\117\114\32\99\97\109\101\114\97\32\111\110\32\116\111\32\97\32\112\108\97\121\101\114\46"
 })
-table.insert(L_43_, {
+table.insert(L_44_, {
 	Command = "\71\114\97\118\105\116\121",
 	Description = "\83\101\116\115\32\103\114\97\118\105\116\121\46\n\n\69\120\97\109\112\108\101\58\32\103\114\97\118\105\116\121\32\48"
 })
-table.insert(L_43_, {
+table.insert(L_44_, {
 	Command = "\84\111\47\84\112\47\84\101\108\101\112\111\114\116",
 	Description = "\84\101\108\101\112\111\114\116\32\116\111\32\115\111\109\101\111\110\101\n\n\69\120\97\109\112\108\101\58\32\116\101\108\101\112\111\114\116\32\98\117\105\108\100\101\114\109\97\110"
 })
-table.insert(L_43_, {
+table.insert(L_44_, {
 	Command = "\66\116\111\47\66\116\112\47\66\116\101\108\101\112\111\114\116",
 	Description = "\84\101\108\101\112\111\114\116\32\98\121\112\97\115\115\32\116\111\32\115\111\109\101\111\110\101\n\n\69\120\97\109\112\108\101\58\32\98\116\101\108\101\112\111\114\116\32\98\117\105\108\100\101\114\109\97\110"
 })
 
-table.insert(L_43_, {
+table.insert(L_44_, {
 	Command = "\85\110\102\108\121",
 	Description = "\85\110\100\111\101\115\32\116\104\101\32\70\108\121\32\99\111\109\109\97\110\100"
 })
-table.insert(L_43_, {
+table.insert(L_44_, {
 	Command = "\85\110\102\108\111\97\116",
 	Description = "\85\110\100\111\101\115\32\116\104\101\32\70\108\111\97\116\32\99\111\109\109\97\110\100"
 })
-table.insert(L_43_, {
+table.insert(L_44_, {
 	Command = "\85\110\69\115\112",
 	Description = "\85\110\100\111\101\115\32\116\104\101\32\69\115\112\32\99\111\109\109\97\110\100"
+})
+table.insert(L_44_, {
+	Command = "\85\110\67\97\109\108\111\99\107",
+	Description = "\85\110\100\111\101\115\32\116\104\101\32\67\97\109\108\111\99\107\32\99\111\109\109\97\110\100"
 })
 
 
@@ -1152,3 +1169,5 @@ table.insert(L_43_, {
 
 L_19_("\84\104\97\110\107\32\121\111\117\32\102\111\114\32\117\115\105\110\103\32\68\114\80\111\112\112\97\32\65\100\109\105\110\33", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
 L_19_("\84\111\111\107\32" .. tick() - L_1_ .. "\32\116\111\32\115\116\97\114\116", "\73\110\115\116\105\116\117\116\105\111\110\97\108\32\119\104\105\116\101")
+wait(0.5)
+L_19_("\74\111\105\110\32\116\104\101\32\100\105\115\99\111\114\100\32\105\102\32\121\111\117\32\119\111\117\108\100\32\108\105\107\101\58\32\100\105\115\99\111\114\100\46\103\103\47\72\119\117\72\120\89\71", "\66\114\105\103\104\116\32\118\105\111\108\101\116")
