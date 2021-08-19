@@ -509,6 +509,7 @@ L_17_ = function(L_111_arg1)
 				L_27_ = not L_27_
 				if not L_27_ and L_30_ ~= nil then
 					L_30_:Destroy()
+					L_30_ = nil
 				end
 				local L_116_ = L_52_func(L_9_)
 				if L_116_ ~= nil and L_116_ == Enum.HumanoidRigType.R15 then
@@ -1001,7 +1002,7 @@ coroutine.wrap(function()
 			local L_184_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
 			if L_30_ == nil then
 				L_30_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
-				L_30_.Transparency = 1
+				L_30_.Transparency = 0
 				L_30_.Size = Vector3["\110\101\119"](6, 1, 6)
 				L_30_.Anchored = true
 				L_30_.Name = L_20_(25)
