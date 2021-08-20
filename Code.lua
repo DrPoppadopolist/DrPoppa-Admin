@@ -953,44 +953,56 @@ L_3_.PlayerAdded:Connect(function(L_180_arg1)
 	end)
 end)
 
-L_9_.Chatted:Connect(function(L_184_arg1)
-	if string.sub(string.lower(L_184_arg1), 1, string.len(L_14_)) == string.lower(L_14_) then
-		L_17_(string.sub(L_184_arg1, string.len(L_14_) + 1, string.len(L_184_arg1)))
+L_3_.PlayerRemoving:Connect(function(L_184_arg1)
+	for L_186_forvar1 = 1, #L_48_ do
+		if L_48_[L_186_forvar1] == tostring(L_184_arg1) then
+			table.remove(L_48_, L_186_forvar1)
+		end
+	end
+	local L_185_ = L_21_(L_16_, tostring(L_184_arg1), "\70\105\110\100")
+	if L_185_ ~= nil then
+		L_185_:Destroy()
+	end
+end)
+
+L_9_.Chatted:Connect(function(L_187_arg1)
+	if string.sub(string.lower(L_187_arg1), 1, string.len(L_14_)) == string.lower(L_14_) then
+		L_17_(string.sub(L_187_arg1, string.len(L_14_) + 1, string.len(L_187_arg1)))
 	end
 end)
 
 -- // USER INPUTS \\ --
 
-L_6_.InputBegan:Connect(function(L_185_arg1, L_186_arg2)
-	if L_186_arg2 then
+L_6_.InputBegan:Connect(function(L_188_arg1, L_189_arg2)
+	if L_189_arg2 then
 		Typing = true
-	elseif not L_186_arg2 then
+	elseif not L_189_arg2 then
 		Typing = false
-		if L_185_arg1.KeyCode == Enum.KeyCode.W then
+		if L_188_arg1.KeyCode == Enum.KeyCode.W then
 			L_49_["\87"] = true
 		end
-		if L_185_arg1.KeyCode == Enum.KeyCode.A then
+		if L_188_arg1.KeyCode == Enum.KeyCode.A then
 			L_49_["\65"] = true
 		end
-		if L_185_arg1.KeyCode == Enum.KeyCode.S then
+		if L_188_arg1.KeyCode == Enum.KeyCode.S then
 			L_49_["\83"] = true
 		end
-		if L_185_arg1.KeyCode == Enum.KeyCode.D then
+		if L_188_arg1.KeyCode == Enum.KeyCode.D then
 			L_49_["\68"] = true
 		end
-		if L_185_arg1.KeyCode == Enum.KeyCode.Q then
+		if L_188_arg1.KeyCode == Enum.KeyCode.Q then
 			L_49_["\81"] = true
 			if L_27_ then
 				L_29_ = 0.5
 			end
 		end
-		if L_185_arg1.KeyCode == Enum.KeyCode.E then
+		if L_188_arg1.KeyCode == Enum.KeyCode.E then
 			L_49_["\69"] = true
 			if L_27_ then
 				L_29_ = -0.5
 			end
 		end
-		if L_185_arg1.KeyCode == L_15_ and not CmdBarTweening then
+		if L_188_arg1.KeyCode == L_15_ and not CmdBarTweening then
 			L_18_()
 			CmdBarTweening = true
 			L_53_.Size = UDim2.new(0, 0, 0, 25)
@@ -1006,34 +1018,34 @@ L_6_.InputBegan:Connect(function(L_185_arg1, L_186_arg2)
 	end
 end)
 
-L_6_.InputEnded:Connect(function(L_187_arg1, L_188_arg2)
-	if L_187_arg1.KeyCode == Enum.KeyCode.W then
+L_6_.InputEnded:Connect(function(L_190_arg1, L_191_arg2)
+	if L_190_arg1.KeyCode == Enum.KeyCode.W then
 		L_49_["\87"] = false
 	end
-	if L_187_arg1.KeyCode == Enum.KeyCode.A then
+	if L_190_arg1.KeyCode == Enum.KeyCode.A then
 		L_49_["\65"] = false
 	end
-	if L_187_arg1.KeyCode == Enum.KeyCode.S then
+	if L_190_arg1.KeyCode == Enum.KeyCode.S then
 		L_49_["\83"] = false
 	end
-	if L_187_arg1.KeyCode == Enum.KeyCode.D then
+	if L_190_arg1.KeyCode == Enum.KeyCode.D then
 		L_49_["\68"] = false
 	end
-	if L_187_arg1.KeyCode == Enum.KeyCode.Q then
+	if L_190_arg1.KeyCode == Enum.KeyCode.Q then
 		L_49_["\81"] = false
 		if L_27_ then
 			L_29_ = 0
 		end
 	end
-	if L_187_arg1.KeyCode == Enum.KeyCode.E then
+	if L_190_arg1.KeyCode == Enum.KeyCode.E then
 		L_49_["\69"] = false
 		if L_27_ then
 			L_29_ = 0
 		end
 	end
-	if L_188_arg2 then
+	if L_191_arg2 then
 		Typing = true
-	elseif not L_188_arg2 then
+	elseif not L_191_arg2 then
 		Typing = false
 	end
 end)
@@ -1043,26 +1055,26 @@ end)
 coroutine.wrap(function()
 	while true do
 		if L_40_ and L_41_ ~= nil then
-			local L_189_ = {}
-			local L_190_ = L_21_(L_3_, L_41_, "\70\105\110\100")
-			local L_191_
-			if L_190_ ~= nil and L_190_.Character ~= nil then
-				for L_192_forvar1, L_193_forvar2 in next, L_190_.Character:GetChildren() do
-					if L_193_forvar2:IsA("\66\97\115\101\80\97\114\116") and string.lower(tostring(L_193_forvar2)) == string.lower(L_42_) then
-						L_191_ = L_193_forvar2
+			local L_192_ = {}
+			local L_193_ = L_21_(L_3_, L_41_, "\70\105\110\100")
+			local L_194_
+			if L_193_ ~= nil and L_193_.Character ~= nil then
+				for L_195_forvar1, L_196_forvar2 in next, L_193_.Character:GetChildren() do
+					if L_196_forvar2:IsA("\66\97\115\101\80\97\114\116") and string.lower(tostring(L_196_forvar2)) == string.lower(L_42_) then
+						L_194_ = L_196_forvar2
 						break
 					end
 				end
-				if L_191_ ~= nil then
-					L_10_.CoordinateFrame = CFrame["\110\101\119"](L_10_.CoordinateFrame.p, L_191_.Position)
+				if L_194_ ~= nil then
+					L_10_.CoordinateFrame = CFrame["\110\101\119"](L_10_.CoordinateFrame.p, L_194_.Position)
 				end
 			end
 		end
 		if L_38_ then
-			local L_194_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_194_ ~= nil and L_194_.Health ~= 0 then
-				for L_195_forvar1, L_196_forvar2 in next, L_194_:GetPlayingAnimationTracks() do
-					L_196_forvar2:AdjustSpeed(L_39_)
+			local L_197_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_197_ ~= nil and L_197_.Health ~= 0 then
+				for L_198_forvar1, L_199_forvar2 in next, L_197_:GetPlayingAnimationTracks() do
+					L_199_forvar2:AdjustSpeed(L_39_)
 				end
 			end
 		end
@@ -1075,15 +1087,15 @@ _G.Test = 1e50
 coroutine.wrap(function()
 	while true do
 		if L_31_ then
-			local L_197_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			local L_198_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_197_ ~= nil and L_198_ ~= nil then
-				local L_199_ = Vector3["\110\101\119"](L_198_.MoveDirection.X, 0, L_198_.MoveDirection.Z) * L_32_
-				L_197_.CFrame = L_197_.CFrame + L_199_
+			local L_200_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_201_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_200_ ~= nil and L_201_ ~= nil then
+				local L_202_ = Vector3["\110\101\119"](L_201_.MoveDirection.X, 0, L_201_.MoveDirection.Z) * L_32_
+				L_200_.CFrame = L_200_.CFrame + L_202_
 			end
 		end
 		if L_27_ then
-			local L_200_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_203_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
 			if L_30_ == nil then
 				L_30_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
 				L_30_.Transparency = 1
@@ -1091,27 +1103,27 @@ coroutine.wrap(function()
 				L_30_.Anchored = true
 				L_30_.Name = L_20_(25)
 			end
-			if L_200_ ~= nil then
-				L_30_.CFrame = L_200_.CFrame * CFrame["\110\101\119"](0, L_28_ + L_29_, 0)
+			if L_203_ ~= nil then
+				L_30_.CFrame = L_203_.CFrame * CFrame["\110\101\119"](0, L_28_ + L_29_, 0)
 			end
 		end
 		if L_36_ then
-			local L_201_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			local L_202_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_201_ ~= nil and L_202_ ~= nil then
-				L_202_:ChangeState(11)
-				L_201_.Velocity = Vector3["\110\101\119"](0, 1e38, 0)
-				L_202_:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+			local L_204_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_205_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_204_ ~= nil and L_205_ ~= nil then
+				L_205_:ChangeState(11)
+				L_204_.Velocity = Vector3["\110\101\119"](0, 1e38, 0)
+				L_205_:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
 			end
 		end
 		if L_37_ then
-			local L_203_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			local L_204_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_203_ ~= nil and L_204_ ~= nil then
-				L_204_:ChangeState(11)
-				L_203_.Velocity = Vector3["\110\101\119"](0, 150, 0)
-				L_203_.CFrame = CFrame["\110\101\119"](L_203_.Position) * CFrame.Angles(math["\114\97\100"](90), 0, 0)
-				L_204_:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+			local L_206_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_207_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_206_ ~= nil and L_207_ ~= nil then
+				L_207_:ChangeState(11)
+				L_206_.Velocity = Vector3["\110\101\119"](0, 150, 0)
+				L_206_.CFrame = CFrame["\110\101\119"](L_206_.Position) * CFrame.Angles(math["\114\97\100"](90), 0, 0)
+				L_207_:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
 			end
 		end
 		L_12_:Wait()
@@ -1121,51 +1133,51 @@ end)()
 coroutine.wrap(function()
 	while true do
 		if L_24_ then
-			local L_205_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
-			local L_206_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
-			if L_205_ ~= nil and L_206_ ~= nil then
+			local L_208_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100\82\111\111\116\80\97\114\116", "\70\105\110\100")
+			local L_209_ = L_21_(L_9_.Character, "\72\117\109\97\110\111\105\100", "\70\105\110\100")
+			if L_208_ ~= nil and L_209_ ~= nil then
 				if L_26_ ~= nil then
-					L_205_.CFrame = L_26_
+					L_208_.CFrame = L_26_
 				end
-				L_206_.PlatformStand = true
-				local L_207_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
-				L_207_.Name = L_20_(25)
-				L_207_.Size = Vector3["\110\101\119"](1, 1, 1)
-				L_207_.Anchored = true
-				L_207_.CFrame = L_205_.CFrame
-				L_207_.CanCollide = false
-				L_207_.Transparency = 1
-				local L_208_ = Instance["\110\101\119"]("\87\101\108\100", L_207_)
-				L_208_.Part0 = L_205_
-				L_208_.Part1 = L_207_
+				L_209_.PlatformStand = true
+				local L_210_ = Instance["\110\101\119"]("\80\97\114\116", workspace)
+				L_210_.Name = L_20_(25)
+				L_210_.Size = Vector3["\110\101\119"](1, 1, 1)
+				L_210_.Anchored = true
+				L_210_.CFrame = L_208_.CFrame
+				L_210_.CanCollide = false
+				L_210_.Transparency = 1
+				local L_211_ = Instance["\110\101\119"]("\87\101\108\100", L_210_)
+				L_211_.Part0 = L_208_
+				L_211_.Part1 = L_210_
 				if not Typing then
 					if L_49_["\87"] then
-						L_207_.CFrame = L_207_.CFrame + L_207_.CFrame.lookVector * L_25_
+						L_210_.CFrame = L_210_.CFrame + L_210_.CFrame.lookVector * L_25_
 					end
 					if L_49_["\83"] then
-						L_207_.CFrame = L_207_.CFrame + L_207_.CFrame.lookVector * -L_25_
+						L_210_.CFrame = L_210_.CFrame + L_210_.CFrame.lookVector * -L_25_
 					end
 					if L_49_["\65"] then
-						L_207_.CFrame = L_207_.CFrame + L_207_.CFrame.rightVector * -L_25_
+						L_210_.CFrame = L_210_.CFrame + L_210_.CFrame.rightVector * -L_25_
 					end
 					if L_49_["\68"] then
-						L_207_.CFrame = L_207_.CFrame + L_207_.CFrame.rightVector * L_25_
+						L_210_.CFrame = L_210_.CFrame + L_210_.CFrame.rightVector * L_25_
 					end
 				end
-				L_207_.CFrame = CFrame["\110\101\119"](L_205_.Position, L_10_.CoordinateFrame.lookVector * 9e9)
-				L_26_ = L_205_.CFrame
+				L_210_.CFrame = CFrame["\110\101\119"](L_208_.Position, L_10_.CoordinateFrame.lookVector * 9e9)
+				L_26_ = L_208_.CFrame
 				L_13_:Wait()
-				if L_205_ ~= nil and L_26_ ~= nil then
-					L_205_.CFrame = L_26_
+				if L_208_ ~= nil and L_26_ ~= nil then
+					L_208_.CFrame = L_26_
 				end
-				if L_208_ ~= nil then
-					L_208_:Destroy()
+				if L_211_ ~= nil then
+					L_211_:Destroy()
 				end
-				if L_207_ ~= nil then
-					L_207_:Destroy()
+				if L_210_ ~= nil then
+					L_210_:Destroy()
 				end
-				if L_206_ ~= nil then
-					L_206_.PlatformStand = false
+				if L_209_ ~= nil then
+					L_209_.PlatformStand = false
 				end
 			end
 		end
