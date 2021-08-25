@@ -510,9 +510,10 @@ local function L_69_func(L_139_arg1)
 					L_145_.Part1 = L_141_
 					L_141_.CFrame = CFrame["\110\101\119"](L_141_.Position, L_139_arg1[3].Position)
 					L_141_.CFrame = L_141_.CFrame + L_141_.CFrame.lookVector * L_144_
-					L_13_:Wait()
+					L_15_:Wait()
 					L_145_:Destroy()
-				until L_141_ == nil or L_145_ == nil or (L_140_.Position - L_139_arg1[3].Position).magnitude < 3.5 or L_10_.Character == nil or L_140_.Parent == nil
+					L_15_:Wait()
+				until L_141_ == nil or (L_140_.Position - L_139_arg1[3].Position).magnitude < 3.5 or L_10_.Character == nil or L_140_.Parent == nil
 			end
 		elseif L_139_arg1[1] == "\80\111\115\105\116\105\111\110" then
 			if L_139_arg1[2] == "\73\110\115\116\97\110\116" then
@@ -533,9 +534,10 @@ local function L_69_func(L_139_arg1)
 					L_148_.Part1 = L_141_
 					L_141_.CFrame = CFrame["\110\101\119"](L_141_.Position, L_139_arg1[3].p)
 					L_141_.CFrame = L_141_.CFrame + L_141_.CFrame.lookVector * L_147_
-					L_13_:Wait()
+					L_15_:Wait()
 					L_148_:Destroy()
-				until L_141_ == nil or L_148_ == nil or (L_140_.Position - L_139_arg1[3].p).magnitude < 3.5 or L_10_.Character == nil or L_140_.Parent == nil
+					L_15_:Wait()
+				until L_141_ == nil or (L_140_.Position - L_139_arg1[3].p).magnitude < 3.5 or L_10_.Character == nil or L_140_.Parent == nil
 			end
 		end
 		L_141_:Destroy()
